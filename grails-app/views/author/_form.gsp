@@ -1,34 +1,45 @@
-<div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'address', 'error')} ">
-    <label for="address">
-        <g:message code="author.address.label" default="Address"/>
+ <script>
+     function AuthorController($scope,$http)
+     {
+         alert("hello");
+     }
+ </script>
+<div ng-app="">
+    <div ng-controller="AuthorController">
+        <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'address', 'error')} ">
+            <label for="address">
+                <g:message code="author.address.label" default="Address"/>
 
-    </label>
-    <g:textField name="address" value="${authorInstance?.address}"/>
-</div>
+            </label>
+            <g:textField name="address" value="${authorInstance?.address}"/>
+        </div>
 
-<div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'book', 'error')} ">
-    <label for="book">
-        <g:message code="author.book.label" default="Book"/>
+        <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'book', 'error')} ">
+            <label for="book">
+                <g:message code="author.book.label" default="Book"/>
 
-    </label>
+            </label>
 
-    <ul class="one-to-many">
-        <g:each in="${authorInstance?.book ?}" var="b">
-            <li><g:link controller="book" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="book" action="create"
-                    params="['author.id': authorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'book.label', default: 'Book')])}</g:link>
-        </li>
-    </ul>
+            <ul class="one-to-many">
+                <g:each in="${authorInstance?.book ?}" var="b">
+                    <li><g:link controller="book" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></li>
+                </g:each>
+                <li class="add">
+                    <g:link controller="book" action="create"
+                            params="['author.id': authorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'book.label', default: 'Book')])}</g:link>
+                </li>
+            </ul>
 
-</div>
+        </div>
 
-<div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'name', 'error')} ">
-    <label for="name">
-        <g:message code="author.name.label" default="Name"/>
+        <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'name', 'error')} ">
+            <label for="name">
+                <g:message code="author.name.label" default="Name"/>
 
-    </label>
-    <g:textField name="name" value="${authorInstance?.name}"/>
+            </label>
+            <g:textField name="name" value="${authorInstance?.name}"/>
+        </div>
+
+    </div>
 </div>
 
