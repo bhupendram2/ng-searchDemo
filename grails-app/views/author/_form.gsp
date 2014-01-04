@@ -1,23 +1,19 @@
- <script>
-     function AuthorController($scope,$http)
-     {
-         alert("hello");
-     }
- </script>
-<div ng-app="">
-    <div ng-controller="AuthorController">
+<div ng-app="myApp">
+    <div ng-controller="appController">
         <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'address', 'error')} ">
             <label for="address">
                 <g:message code="author.address.label" default="Address"/>
-
             </label>
-            <g:textField name="address" value="${authorInstance?.address}"/>
+            <g:textField name="address" ng-model="name"
+                         value="${authorInstance?.address}"
+                         y-search-grid=""
+                         y-search-domain="Author"
+                         y-search-query="from Author p where p.name like '%{{name}}%'"/>
         </div>
 
         <div class="fieldcontain ${hasErrors(bean: authorInstance, field: 'book', 'error')} ">
             <label for="book">
                 <g:message code="author.book.label" default="Book"/>
-
             </label>
 
             <ul class="one-to-many">
